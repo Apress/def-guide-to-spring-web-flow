@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+	  http://www.springframework.org/schema/webflow/spring-webflow-1.0.xsd">
+
+	<start-state idref="showBeneficiaries"/>
+	
+	<view-state id="showBeneficiaries" view="beneficiaries">
+		<render-actions>
+			<bean-action bean="accountRepository" method="getAccounts">
+				<method-arguments>
+					<argument expression="externalContext.sessionMap.user.clientId"/>
+				</method-arguments>
+				<method-result name="accounts"/>
+			</bean-action>
+			<bean-action bean="accountRepository" method="getBeneficiaries">
+				<method-arguments>
+					<argument expression="externalContext.sessionMap.user.clientId"/>
+				</method-arguments>
+				<method-result name="beneficiaries"/>
+			</bean-action>
+		</render-actions>
+		<transition on="select" to="loadBeneficiary"/>
+		<transition on="cancel" to="endCancel"/>
+	</view-state>
+	
+	<action-state id="loadBeneficiary">
+		<bean-action bean="accountRepository" method="getAccount">
+			<method-arguments>
+				<argument expression="requestParameters.accountNumber"/>
+			</method-arguments>
+			<method-result name="beneficiary" scope="flow"/>
+		</bean-action>
+		<transition on="success" to="endSelected"/>
+	</action-state>
+	
+	<end-state id="endSelected">
+		<output-mapper>
+			<output-attribute name="beneficiary"/>
+		</output-mapper>
+	</end-state>
+
+	<end-state id="endCancel"/>
+</flow>

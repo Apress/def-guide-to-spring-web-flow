@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.0.xsd">
+       
+	<bean id="formAction" class="org.springframework.webflow.action.FormAction">
+		<property name="formObjectClass" value="com.ervacon.springbank.domain.Payment"/>
+		<property name="formObjectName" value="payment"/>
+		<property name="formObjectScope" value="CONVERSATION"/>
+		<property name="formErrorsScope" value="CONVERSATION"/>
+		<property name="propertyEditorRegistrar">
+			<bean class="com.ervacon.springbank.web.PaymentPropertyEditorRegistrar" autowire="byName"/>
+		</property>
+		<property name="validator">
+			<bean class="com.ervacon.springbank.domain.PaymentValidator"/>
+		</property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,44 @@
+.containerTop {
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+	border-bottom: 1px solid green;
+	padding-bottom: 3px;
+}
+
+.container {
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+	padding-bottom: 20px;
+}
+
+.containerBottom {
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+	border-top: 1px solid green;
+	padding-top: 3px;
+	text-align: right;
+}
+
+.operations {
+	height: 20px;
+	vertical-align: middle;
+	border-bottom: 1px solid green;
+	padding-bottom: 3px;
+}
+
+.error {
+	color: red;
+	padding-bottom: 10px;
+}
+
+.confirmation {
+	color: green;
+	padding-bottom: 10px;
+}
+
+th {
+	background-color: #cdde8e;
+}

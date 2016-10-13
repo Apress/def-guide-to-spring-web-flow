@@ -1,0 +1,34 @@
+<ivy-module version="1.1">
+	<info organisation="com.ervacon" module="springbank"/>
+
+	<configurations>
+		<conf name="global" visibility="private"/>
+		<conf name="buildtime" visibility="private"/>
+		<conf name="test" visibility="private"/>
+
+		<conf name="default" extends="global"/>
+	</configurations>
+
+	<dependencies defaultconf="global->default">
+		<!-- buildtime dependencies -->
+		<dependency org="javax.servlet" name="servlet-api" rev="2.4" conf="buildtime->default" />
+
+		<!-- global dependencies -->
+		<dependency org="log4j" name="log4j" rev="1.2.14"/>
+		<dependency org="taglibs" name="standard" rev="1.1.2"/>
+		<dependency org="jstl" name="jstl" rev="1.1.2"/>
+		<dependency org="opensymphony" name="sitemesh" rev="2.3"/>
+		<dependency org="displaytag" name="displaytag" rev="1.1"/>
+		<dependency org="commons-beanutils" name="commons-beanutils" rev="1.7.0"/>
+		<dependency org="commons-lang" name="commons-lang" rev="2.4"/>
+		<dependency org="commons-collections" name="commons-collections" rev="3.2.1"/>
+		<dependency org="com.lowagie" name="itext" rev="1.4.8"/>
+		<dependency org="org.springframework" name="spring-webflow" rev="1.0.5"/>
+		<dependency org="org.springframework.security" name="spring-security-core" rev="2.0.3"/>
+		<dependency org="org.springframework" name="spring-aop" rev="2.0.7"/>
+
+		<!-- test-time only dependencies -->
+		<dependency org="junit" name="junit" rev="3.8.2" conf="test->default"/>
+		<dependency org="org.easymock" name="easymock" rev="2.2" conf="test->default" />
+	</dependencies>
+</ivy-module>

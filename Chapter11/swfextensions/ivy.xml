@@ -1,0 +1,24 @@
+<ivy-module version="1.1">
+	<info organisation="com.ervacon" module="swfextensions"/>
+
+	<configurations>
+		<conf name="global" visibility="private"/>
+		<conf name="buildtime" visibility="private"/>
+		<conf name="test" visibility="private"/>
+
+		<conf name="default" extends="global"/>
+	</configurations>
+
+	<dependencies defaultconf="global->default">
+		<!-- buildtime dependencies -->
+		<dependency org="javax.servlet" name="servlet-api" rev="2.4" conf="buildtime->default" />
+
+		<!-- global dependencies -->
+		<dependency org="org.springframework" name="spring-webflow" rev="1.0.5"/>
+		<dependency org="org.springframework" name="spring-dao" rev="2.0.7"/>
+		<dependency org="org.springframework" name="spring-jdbc" rev="2.0.7"/>
+
+		<!-- test-time only dependencies -->
+		<dependency org="junit" name="junit" rev="3.8.2" conf="test->default"/>
+	</dependencies>
+</ivy-module>

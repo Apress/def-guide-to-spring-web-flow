@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-2.0.xsd">
+
+	<http>
+		<intercept-url pattern="/session/login.html" access="ROLE_ANONYMOUS,ROLE_USER" />
+		<intercept-url pattern="/**/*.html" access="ROLE_USER" />
+		<form-login
+			login-page="/session/login.html"
+			authentication-failure-url="/session/login.html?loginError=1"
+			default-target-url="/session/prepare.html"
+			always-use-default-target="true"/>
+		<anonymous/>
+	</http>
+</beans:beans>
